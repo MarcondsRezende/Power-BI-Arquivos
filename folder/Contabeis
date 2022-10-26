@@ -1,1 +1,224 @@
+import pandas as pd
 
+data = pd.read_excel('Modelagem 4 BI.xlsx')
+data.head(5)
+
+data['Contabilidade'].unique()
+data["Segmento"] = data["Segmento"].str.lower()
+data["Segmento"].unique()
+
+def n_Segmento(o_Segmento):
+    if 'com varej'  in o_Segmento:
+        return 'Varejo'
+    elif 'com varj' in o_Segmento:
+        return 'Varejo'
+    elif 'com var'in o_Segmento:
+        return 'Varejo'
+    elif 'come varej' in o_Segmento:
+        return 'Varejo'
+    elif 'com atac' in o_Segmento:
+        return 'Atacado'
+    elif 'comercio' in o_Segmento:
+        return 'Comercio'
+    elif 'acougue' in o_Segmento:
+        return 'Comercio'
+    elif 'hortifruti' in o_Segmento:
+        return 'Comercio' 
+    elif 'drogaria' in o_Segmento:
+        return 'Farmacia'
+    elif 'farmacia' in o_Segmento:
+        return 'Farmacia'
+    elif 'revenda' and 'sapatos' in o_Segmento:
+        return 'Comercio'
+    elif 'revenda' and 'rouopas' in o_Segmento:
+        return 'Comercio'
+    elif 'terceiro' and 'setor' in o_Segmento:
+        return 'Comercio'
+    elif 'restaurante' in o_Segmento:
+        return 'Bar & Restaurantes'
+    elif 'lanchonete/bar'  in o_Segmento:
+        return 'Bar & Restaurantes'
+    elif 'lanchonete'  in o_Segmento:
+        return 'Bar & Restaurantes'
+    elif 'alimentacao' in o_Segmento:
+        return 'Alimentaçao'
+    elif 'revenda' in o_Segmento:
+        return 'Comercio'
+    elif (
+        'serviços' and '-' and 'servicos' and 'serv'
+        ) in o_Segmento:
+        return 'Serviços'
+    elif 'transporte'  in o_Segmento:
+        return 'Serviços'
+    elif 'casa' and 'loterica' in o_Segmento:
+        return 'Serviços'
+    elif 'pesquisa' and 'desenvolvimento' in o_Segmento:
+        return 'Serviços'
+    elif 'limpeza' in o_Segmento:
+        return 'Serviços'
+    elif 'seguradora' in o_Segmento:
+        return 'Serviços'
+    elif 'instalacoes' in o_Segmento:
+        return 'Serviços'
+    elif 'plotagem'  in o_Segmento:
+        return 'Comercio'
+    elif 'oficinas' in o_Segmento:
+        return 'Comercio'
+    elif 'advocacia'in o_Segmento:
+        return 'Serviços'
+    elif 'corretagem' and 'imoveis' in o_Segmento:
+        return 'Imobiliaria'
+    elif 'imobiliaria' in o_Segmento:
+        return 'Imobiliaria'
+    elif 'consul' in o_Segmento:
+        return'Consultoria'
+    elif (
+        'mat' and  'construcao' 
+        ) in o_Segmento:
+        return 'Comercio'
+    elif 'instalacao' and 'equipamentos' in o_Segmento:
+        return 'Comercio'
+    elif (
+        'veiculos' and 'lavagem'
+        ) in o_Segmento:
+        return 'Comercio'
+    elif 'coleta'  in o_Segmento:
+        return 'Comercio'
+    elif 'estudos' in o_Segmento:
+        return 'Comercio'
+    elif 'auto' and 'escola' in o_Segmento:
+        return 'Comercio'
+    elif 'ind.' in o_Segmento:
+        return 'Industria'
+    elif 'industria' in o_Segmento:
+        return 'Industria'
+    elif 'fabricacao' in o_Segmento:
+        return 'Industria'
+    elif 'fabricação' and 'paines' in o_Segmento:
+        return 'Industria'
+    elif 'extracao' in o_Segmento:
+        return 'Industria'
+    elif 'contabilidade' in o_Segmento:
+        return 'Contabilidade'
+    elif 'cultivo'in o_Segmento:
+        return  'Agronegocio'
+    elif 'criacao' in o_Segmento:
+        return 'Agronegocio'
+    elif 'padaria' in o_Segmento:
+        return 'Padaria' 
+    elif (
+        'clinica' or 'clinicas'
+        ) in o_Segmento:
+        return 'Clinica'
+    elif (
+        'odontologia' or 'fisioterapia' or 'psicologia'
+        ) in o_Segmento:
+        return 'Clinica'
+    elif 'aluguel' and 'imoveis' in o_Segmento:
+        return 'Imobiliaria'
+    elif 'lavand' in o_Segmento:
+        return 'Serviços'
+    elif 'corretora' in o_Segmento:
+        return 'Imobiliaria'
+    elif 'organizacao' and 'religiosa' in o_Segmento:
+        return 'Igrejas'
+    elif 'educacao' and 'infantil' in o_Segmento:
+        return 'Escola'
+    elif 'provedores' and 'redes' in o_Segmento:
+        return 'Serviços'
+    elif 'agencia' and 'viagen'in o_Segmento:
+        return 'Comercio'
+    elif 'designer' in o_Segmento:
+        return 'Serviços'
+    elif 'engenharia' in o_Segmento:
+        return 'Serviços'
+    elif 'arquitetura' in o_Segmento:
+        return 'Serviços'
+    elif 'reseprentante' and 'comercial' in o_Segmento:
+        return 'Serviços'
+    elif 'atividade' in o_Segmento:
+        return 'Serviços'
+    elif 'oficina' in o_Segmento:
+        return 'Comercio'
+    elif 'ediçao' and 'livros' in o_Segmento:
+        return 'Comercio'
+    elif 'lanternagem' and 'veicu' in o_Segmento:
+        return 'Serviços'
+    elif 'produtos' and 'quimicos' in o_Segmento:
+        return 'Industria'
+    elif 'confeitaria' in o_Segmento:
+        return 'Padaria'
+    elif 'manutecao' and 'automovel' in o_Segmento:
+        return 'Serviços'
+    elif 'fabricação' and 'moveis' in o_Segmento:
+        return 'Industria'
+    elif 'lanchonete' in o_Segmento:
+        return 'Bar & Restaurantes'
+    elif 'treinamento' in o_Segmento:
+        return 'Serviços'
+    elif 'sindicato' in o_Segmento:
+        return 'Sindicato'
+    elif 'representacao' in o_Segmento:
+        return 'Serviços'
+    elif 'comércio' in o_Segmento:
+        return 'Comercio'
+    elif 'clínica' in o_Segmento:
+        return 'Clinica'
+    elif 'fabricação' and 'comercio' in o_Segmento:
+        return 'Comercio'
+    elif 'imobiliária' in o_Segmento:
+        return 'Imobiliaria'
+    elif 'açougue' in o_Segmento:
+        return 'Comercio'
+    elif 'médico' in o_Segmento:
+        return 'Clinica'
+    elif 'indústria' in o_Segmento:
+        return 'Industria'
+    elif 'instalações' in o_Segmento:
+        return 'Serviços'
+    elif 'mat' and 'de' and 'construção' in o_Segmento:
+        return 'Comercio'
+    elif 'fabricação' in o_Segmento:
+        return 'Comercio'
+    elif 'cursos' in o_Segmento:
+        return 'Serviços'
+    elif 'lotérica' in o_Segmento:
+        return 'Comercio'
+    elif 'hotéis' in o_Segmento:
+        return 'Serviços'
+    elif 'produção' and 'musical' in o_Segmento:
+        return 'Serviços'
+    elif 'locação' and 'aeronaves' in o_Segmento:
+        return 'Serviços'
+    elif 'formação' in o_Segmento:
+        return 'Serviços'
+    elif 'administração' and 'imóveis' in o_Segmento:
+        return 'Imobiliaria'
+    elif 'alimentação' in o_Segmento:
+        return 'Bar & Restaurantes'
+    elif 'aparelhamento' in o_Segmento:
+        return 'Serviços'
+    elif 'fotocópias' in o_Segmento:
+        return 'Comercio'
+    elif 'extração' in o_Segmento:
+        return 'Industria'
+    elif 'clinícas' in o_Segmento:
+        return 'Clinica'
+    elif 'bovinos' in o_Segmento:
+        return 'Agronegocio'
+    elif 'pintura' in o_Segmento:
+        return 'Serviços'
+    else:
+        return o_Segmento
+        
+        
+ data['Segmento'] = data['Segmento'].apply(n_Segmento) 
+ data['Segmento'].unique()
+ len(data['Segmento'].value_counts())
+ data['Segmento'].value_counts()
+ len(data['Segmento'])
+ data['Regime Tributário'].unique()
+ data['Regime Tributário'].isnull().sum()
+ data.to_excel('c10.xlsx', index=False)
+ data.head()
+ data[data['Empresa'].duplicated(keep=False)]
